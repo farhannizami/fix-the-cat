@@ -3,7 +3,7 @@
 let imgnum = [2, 3, 4, 5, 6, 7, 8, 9];
 imgnum = shuffleArray(imgnum);
 
-const idlist = ['1-1','1-2','1-3','2-1','2-2','2-3','3-1','3-2','3-3'];
+const idlist = ['1-1', '1-2', '1-3', '2-1', '2-2', '2-3', '3-1', '3-2', '3-3'];
 
 function createbox() {
     let i;
@@ -11,22 +11,20 @@ function createbox() {
         const square = document.createElement("div");
         square.classList.add('cell');
 
-        const frs = 
 
-        square.id = idlist[i];
+        //square.id = idlist[i];
 
-        if(i==0)
-        {
+        if (i == 0) {
             square.classList.add('faka');
+            square.innerHTML = "<img src='images/solid-color-image.jpeg' width=104px height=104px class='imgbox' id='" + idlist[i] + "'></img>";
         }
         //document.querySelector(square).appendChild(elem);
 
         //let imgnum = Math.floor(Math.random() * (9 - 2 + 1) + 2);
-        
-        if (i != 0) 
-        {
-            console.log(imgnum[i-1]);
-            square.innerHTML = "<img src='images/" + imgnum[i-1].toString() + ".jpg' width=104px height=104px></img>";
+
+        if (i != 0) {
+            console.log(imgnum[i - 1]);
+            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' width=104px height=104px class='imgbox' id='" + idlist[i] + "'></img>"
         }
 
         //console.log(elem.innerText);
@@ -49,4 +47,102 @@ function shuffleArray(array) {
 }
 
 
+function faltu() {
+    //alert('lol');
+    console.log('nice');
+}
+
+
 createbox();
+
+
+function htmlChanger()
+{
+
+}
+
+
+function checkSurround(idval) {
+
+    alert('oma');
+    let victim = document.getElementById(idval);
+    //current. = 'asdasda';
+
+    console.log(victim.parentNode);
+
+    let [fir, sec] = idval.split('-');
+    console.log(fir, sec);
+    fir = Number(fir);
+    sec = Number(sec);
+
+    let [upf, ups] = [fir - 1, sec];
+    let [downf, downs] = [fir + 1, sec];
+    let [rightf, rights] = [fir, sec + 1];
+    let [leftf, lefts] = [fir, sec - 1];
+    console.log(downf,downs);
+
+    if(upf>0)
+    {
+        let newid = upf.toString()+'-'+ups.toString();
+        let target = document.getElementById(newid);
+
+        //console.log('ekhane');
+
+        let victim_parent = victim.parentElement;
+        let target_parent = target.parentElement;
+
+
+        if(target_parent.classList.contains('faka'))
+        {
+            console.log('ekhane');
+            victim_parent.classList.add('faka');
+            target_parent.classList.remove('faka');
+
+            victim.id = newid;
+            target.id = idval;
+
+            [victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+
+            //console.log(victim);
+            //console.log(target);
+        }
+        
+    }
+    else if(downf>3)
+    {
+        let newid = downf.toString()+'-'+down.toString();
+        let target = document.getElementById(newid);
+
+        let victim_parent = victim.parentElement;
+        let target_parent = target.parentElement;
+
+
+        if(target_parent.classList.contains('faka'))
+        {
+            victim_parent.classList.add('faka');
+            target_parent.classList.remove('faka');
+
+            victim.id = newid;
+            target.id = idval;
+
+            [victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+
+            console.log(victim);
+            console.log(target);
+        }
+    }
+
+
+}
+
+
+const boxes = document.querySelectorAll('.imgbox');
+
+boxes.forEach(box => {
+    box.addEventListener('click', function handleClick(event) {
+        //alert('hi');
+        console.log('box clicked', event.target.id);
+        checkSurround(event.target.id);
+        //box.setAttribute('style', 'background-color: yellow;');
+    });
+});
