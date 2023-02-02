@@ -14,3 +14,14 @@
     align-items: center;
     background-color: green;
 }
+
+.imgbox:hover
+{
+    border-style: solid;
+    border-color: lightblue;
+}
+
+.imgbox
+{
+    box-sizing: border-box;
+}

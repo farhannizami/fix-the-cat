@@ -1,63 +1,66 @@
 'use strict'
 
 let imgnum = [2, 3, 4, 5, 6, 7, 8, 9];
+let winserial = [...imgnum];
 
-imgnum = shuffleArray(imgnum);
+let moves = 0;
 
-while(!isSolvable(imgnum))
-{
+
+function changeOrder() {
     imgnum = shuffleArray(imgnum);
-    console.log('akbar');
+
+    while(!isSolvable(imgnum))
+    {
+        imgnum = shuffleArray(imgnum);
+        console.log('akbar');
+    }
 }
 
 
 const idlist = ['1-1', '1-2', '1-3', '2-1', '2-2', '2-3', '3-1', '3-2', '3-3'];
 
 
-function convertArrayToTable(arr)
-{
-    let i,newarr = [];
+function convertArrayToTable(arr) {
+    let i, newarr = [];
     let eachrow = [];
     eachrow.push(0);
-    for(i=1;i<=arr.length;i++)
-    {
-        if(i%3==2)
-        {
-            eachrow.push(arr[i-1]);
+    for (i = 1; i <= arr.length; i++) {
+        if (i % 3 == 2) {
+            eachrow.push(arr[i - 1]);
             newarr.push(eachrow);
             console.log(eachrow);
             eachrow = [];
         }
-        else
-        {
-            eachrow.push(arr[i-1]);
+        else {
+            eachrow.push(arr[i - 1]);
         }
     }
     console.log(newarr);
     return newarr;
 }
-function getInverseCount(prearr)
-{
-    let inv_count = 0,i,j;
+function getInverseCount(prearr) {
+    let inv_count = 0, i, j;
     let arr = [...prearr];
     arr.unshift(0);
-    for ( i = 0; i < 9 - 1; i++)
-        for ( j = i+1; j < 9; j++)
-             // Value 0 is used for empty space
-             if (arr[j] && arr[i] &&  arr[i] > arr[j])
-                  inv_count++;
+    for (i = 0; i < 9 - 1; i++)
+        for (j = i + 1; j < 9; j++)
+            // Value 0 is used for empty space
+            if (arr[j] && arr[i] && arr[i] > arr[j])
+                inv_count++;
     return inv_count;
 }
-function isSolvable(arr)
-{
+function isSolvable(arr) {
     let invcount = getInverseCount(arr);
     //console.log(invcount+  "   odd na ev");
 
-    if(invcount%2==0) return 1;
+    if (invcount % 2 == 0) return 1;
     return 0;
 }
 
 function createbox() {
+
+    changeOrder();
+
     let i;
     for (i = 0; i < 9; i++) {
         const square = document.createElement("div");
@@ -68,7 +71,7 @@ function createbox() {
 
         if (i == 0) {
             square.classList.add('faka');
-            square.innerHTML = "<img src='images/solid-color-image.jpeg' width=208px height=208px class='imgbox' id='" + idlist[i] + "'></img>";
+            square.innerHTML = "<img src='images/solid-color-image.jpeg' width=208px height=208px class='imgbox class1-1' id='" + idlist[i] + "'></img>";
         }
         //document.querySelector(square).appendChild(elem);
 
@@ -76,16 +79,11 @@ function createbox() {
 
         if (i != 0) {
             console.log(imgnum[i - 1]);
-            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' width=208px height=208px class='imgbox' id='" + idlist[i] + "'></img>"
+            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' width=208px height=208px class='imgbox class" + idlist[imgnum[i - 1] - 1].toString() + "' id='" + idlist[i] + "'></img>"
         }
-
-        //console.log(elem.innerText);
 
         document.querySelector('.grid').appendChild(square);
 
-
-
-        //console.log('lol');
     }
 }
 
@@ -99,18 +97,32 @@ function shuffleArray(array) {
 }
 
 
-function faltu() {
-    //alert('lol');
-    console.log('nice');
-}
-
 
 createbox();
 
 
-function htmlChanger()
-{
+function checkWin() {
+    let shishu = document.querySelector('.grid').children;
+    //console.log(shishu);
 
+    let i;
+    let flag = true;
+    for (i = 0; i < shishu.length; i++) {
+        let classname = shishu[i].children[0].classList[1];
+        //console.log(classname);
+        let slicedClassname = classname.substring(5, 8);
+        console.log(slicedClassname);
+        if (slicedClassname !== idlist[i]) {
+            flag = false;
+            break;
+        }
+    }
+    console.log(flag);
+
+    if (flag) {
+        $('#winModal').modal('show');
+        document.getElementById('moves').innerHTML = moves.toString();
+    }
 }
 
 
@@ -123,7 +135,7 @@ function checkSurround(idval) {
     //console.log(victim.parentNode);
 
     let [fir, sec] = idval.split('-');
-    console.log(fir, sec);
+    //console.log(fir, sec);
     fir = Number(fir);
     sec = Number(sec);
 
@@ -132,25 +144,23 @@ function checkSurround(idval) {
     let [rightf, rights] = [fir, sec + 1];
     let [leftf, lefts] = [fir, sec - 1];
 
-    console.log(upf,ups);
-    console.log(downf,downs);
-    console.log(rightf,rights);
-    console.log(leftf,lefts);
+    //console.log(upf,ups);
+    //console.log(downf,downs);
+    //console.log(rightf,rights);
+    //console.log(leftf,lefts);
 
-    if(upf>0)
-    {
-        let newid = upf.toString()+'-'+ups.toString();
+    if (upf > 0) {
+        let newid = upf.toString() + '-' + ups.toString();
         let target = document.getElementById(newid);
 
         //console.log('ekhane');
 
         let victim_parent = victim.parentElement;
         let target_parent = target.parentElement;
-        console.log(target_parent);
+        //console.log(target_parent);
 
 
-        if(target_parent.classList.contains('faka'))
-        {
+        if (target_parent.classList.contains('faka')) {
             console.log('ekhane');
             victim_parent.classList.add('faka');
             target_parent.classList.remove('faka');
@@ -160,40 +170,41 @@ function checkSurround(idval) {
 
             //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
 
-            console.log(victim_parent);
-            console.log(target_parent);
+            //console.log(victim_parent);
+            //console.log(target_parent);
 
             victim_parent.removeChild(victim_parent.childNodes[0]);
             victim_parent.appendChild(target);
 
             //target_parent.removeChild(target_parent.childNodes[0]);
-            console.log(victim);
+            //console.log(victim);
             target_parent.appendChild(victim);
+
+            moves++;
+            checkWin();
 
             return;
 
             //console.log(victim);
             //console.log(target);
         }
-        
+
     }
-    if(downf<=3)
-    {
-        let newid = downf.toString()+'-'+downs.toString();
+    if (downf <= 3) {
+        let newid = downf.toString() + '-' + downs.toString();
         let target = document.getElementById(newid);
 
 
-        console.log(newid+ "    neww");
+        //console.log(newid+ "    neww");
 
         //console.log('ekhane');
 
         let victim_parent = victim.parentElement;
         let target_parent = target.parentElement;
-        console.log(target_parent);
+        //console.log(target_parent);
 
 
-        if(target_parent.classList.contains('faka'))
-        {
+        if (target_parent.classList.contains('faka')) {
             console.log('okhane');
             victim_parent.classList.add('faka');
             target_parent.classList.remove('faka');
@@ -203,15 +214,18 @@ function checkSurround(idval) {
 
             //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
 
-            console.log(victim_parent);
-            console.log(target_parent);
+            //console.log(victim_parent);
+            //console.log(target_parent);
 
             victim_parent.removeChild(victim_parent.childNodes[0]);
             victim_parent.appendChild(target);
 
             //target_parent.removeChild(target_parent.childNodes[0]);
-            console.log(victim);
+            //console.log(victim);
             target_parent.appendChild(victim);
+
+            moves++;
+            checkWin();
 
             return;
 
@@ -219,24 +233,22 @@ function checkSurround(idval) {
             //console.log(target);
         }
     }
-    if(rights<=3)
-    {
-        let newid = rightf.toString()+'-'+rights.toString();
+    if (rights <= 3) {
+        let newid = rightf.toString() + '-' + rights.toString();
         let target = document.getElementById(newid);
 
 
-        console.log(newid+ "    neww");
+        //console.log(newid+ "    neww");
 
         //console.log('ekhane');
 
         let victim_parent = victim.parentElement;
         let target_parent = target.parentElement;
-        console.log(target_parent);
+        //console.log(target_parent);
 
 
-        if(target_parent.classList.contains('faka'))
-        {
-            console.log('dane');
+        if (target_parent.classList.contains('faka')) {
+            //console.log('dane');
             victim_parent.classList.add('faka');
             target_parent.classList.remove('faka');
 
@@ -245,15 +257,18 @@ function checkSurround(idval) {
 
             //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
 
-            console.log(victim_parent);
-            console.log(target_parent);
+            //console.log(victim_parent);
+            //console.log(target_parent);
 
             victim_parent.removeChild(victim_parent.childNodes[0]);
             victim_parent.appendChild(target);
 
             //target_parent.removeChild(target_parent.childNodes[0]);
-            console.log(victim);
+            //console.log(victim);
             target_parent.appendChild(victim);
+
+            moves++;
+            checkWin();
 
             return;
 
@@ -261,24 +276,22 @@ function checkSurround(idval) {
             //console.log(target);
         }
     }
-    if(lefts>0)
-    {
-        let newid = leftf.toString()+'-'+lefts.toString();
+    if (lefts > 0) {
+        let newid = leftf.toString() + '-' + lefts.toString();
         let target = document.getElementById(newid);
 
 
-        console.log(newid+ "    neww");
+        //console.log(newid+ "    neww");
 
         //console.log('ekhane');
 
         let victim_parent = victim.parentElement;
         let target_parent = target.parentElement;
-        console.log(target_parent);
+        //console.log(target_parent);
 
 
-        if(target_parent.classList.contains('faka'))
-        {
-            console.log('bame');
+        if (target_parent.classList.contains('faka')) {
+            //console.log('bame');
             victim_parent.classList.add('faka');
             target_parent.classList.remove('faka');
 
@@ -287,20 +300,21 @@ function checkSurround(idval) {
 
             //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
 
-            console.log(victim_parent);
-            console.log(target_parent);
+            //console.log(victim_parent);
+            //console.log(target_parent);
 
             victim_parent.removeChild(victim_parent.childNodes[0]);
             victim_parent.appendChild(target);
 
             //target_parent.removeChild(target_parent.childNodes[0]);
-            console.log(victim);
+            //console.log(victim);
             target_parent.appendChild(victim);
+
+            moves++;
+            checkWin();
 
             return;
 
-            //console.log(victim);
-            //console.log(target);
         }
     }
 
@@ -316,4 +330,11 @@ boxes.forEach(box => {
         console.log('box clicked', event.target.id);
         checkSurround(event.target.id);
     });
+});
+
+
+let playbtn = document.querySelector('.playbtn');
+
+playbtn.addEventListener('click', function () {
+    location.reload();
 });
