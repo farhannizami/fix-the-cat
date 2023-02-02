@@ -64,11 +64,11 @@ function htmlChanger()
 
 function checkSurround(idval) {
 
-    alert('oma');
+    //alert('oma');
     let victim = document.getElementById(idval);
     //current. = 'asdasda';
 
-    console.log(victim.parentNode);
+    //console.log(victim.parentNode);
 
     let [fir, sec] = idval.split('-');
     console.log(fir, sec);
@@ -79,7 +79,11 @@ function checkSurround(idval) {
     let [downf, downs] = [fir + 1, sec];
     let [rightf, rights] = [fir, sec + 1];
     let [leftf, lefts] = [fir, sec - 1];
+
+    console.log(upf,ups);
     console.log(downf,downs);
+    console.log(rightf,rights);
+    console.log(leftf,lefts);
 
     if(upf>0)
     {
@@ -90,6 +94,7 @@ function checkSurround(idval) {
 
         let victim_parent = victim.parentElement;
         let target_parent = target.parentElement;
+        console.log(target_parent);
 
 
         if(target_parent.classList.contains('faka'))
@@ -101,34 +106,149 @@ function checkSurround(idval) {
             victim.id = newid;
             target.id = idval;
 
-            [victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+            //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+
+            console.log(victim_parent);
+            console.log(target_parent);
+
+            victim_parent.removeChild(victim_parent.childNodes[0]);
+            victim_parent.appendChild(target);
+
+            //target_parent.removeChild(target_parent.childNodes[0]);
+            console.log(victim);
+            target_parent.appendChild(victim);
+
+            return;
 
             //console.log(victim);
             //console.log(target);
         }
         
     }
-    else if(downf>3)
+    if(downf<=3)
     {
-        let newid = downf.toString()+'-'+down.toString();
+        let newid = downf.toString()+'-'+downs.toString();
         let target = document.getElementById(newid);
+
+
+        console.log(newid+ "    neww");
+
+        //console.log('ekhane');
 
         let victim_parent = victim.parentElement;
         let target_parent = target.parentElement;
+        console.log(target_parent);
 
 
         if(target_parent.classList.contains('faka'))
         {
+            console.log('okhane');
             victim_parent.classList.add('faka');
             target_parent.classList.remove('faka');
 
             victim.id = newid;
             target.id = idval;
 
-            [victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+            //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
 
+            console.log(victim_parent);
+            console.log(target_parent);
+
+            victim_parent.removeChild(victim_parent.childNodes[0]);
+            victim_parent.appendChild(target);
+
+            //target_parent.removeChild(target_parent.childNodes[0]);
             console.log(victim);
-            console.log(target);
+            target_parent.appendChild(victim);
+
+            return;
+
+            //console.log(victim);
+            //console.log(target);
+        }
+    }
+    if(rights<=3)
+    {
+        let newid = rightf.toString()+'-'+rights.toString();
+        let target = document.getElementById(newid);
+
+
+        console.log(newid+ "    neww");
+
+        //console.log('ekhane');
+
+        let victim_parent = victim.parentElement;
+        let target_parent = target.parentElement;
+        console.log(target_parent);
+
+
+        if(target_parent.classList.contains('faka'))
+        {
+            console.log('dane');
+            victim_parent.classList.add('faka');
+            target_parent.classList.remove('faka');
+
+            victim.id = newid;
+            target.id = idval;
+
+            //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+
+            console.log(victim_parent);
+            console.log(target_parent);
+
+            victim_parent.removeChild(victim_parent.childNodes[0]);
+            victim_parent.appendChild(target);
+
+            //target_parent.removeChild(target_parent.childNodes[0]);
+            console.log(victim);
+            target_parent.appendChild(victim);
+
+            return;
+
+            //console.log(victim);
+            //console.log(target);
+        }
+    }
+    if(lefts>0)
+    {
+        let newid = leftf.toString()+'-'+lefts.toString();
+        let target = document.getElementById(newid);
+
+
+        console.log(newid+ "    neww");
+
+        //console.log('ekhane');
+
+        let victim_parent = victim.parentElement;
+        let target_parent = target.parentElement;
+        console.log(target_parent);
+
+
+        if(target_parent.classList.contains('faka'))
+        {
+            console.log('bame');
+            victim_parent.classList.add('faka');
+            target_parent.classList.remove('faka');
+
+            victim.id = newid;
+            target.id = idval;
+
+            //[victim_parent.innerHTML,target_parent.innerHTML] = [target_parent.innerHTML,victim_parent.innerHTML];
+
+            console.log(victim_parent);
+            console.log(target_parent);
+
+            victim_parent.removeChild(victim_parent.childNodes[0]);
+            victim_parent.appendChild(target);
+
+            //target_parent.removeChild(target_parent.childNodes[0]);
+            console.log(victim);
+            target_parent.appendChild(victim);
+
+            return;
+
+            //console.log(victim);
+            //console.log(target);
         }
     }
 
@@ -143,6 +263,5 @@ boxes.forEach(box => {
         //alert('hi');
         console.log('box clicked', event.target.id);
         checkSurround(event.target.id);
-        //box.setAttribute('style', 'background-color: yellow;');
     });
 });
