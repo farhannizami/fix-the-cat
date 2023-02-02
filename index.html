@@ -26,58 +26,56 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background-color: #F7F7F7">
 
-    <div class="container mt-3">
-
-        <div class="row">
-
-            <div class="col">
-                <div class="grid" id="lol"></div>
-            </div>
-
-            <div class="col d-flex justify-content-center">
-                <div>
-                    <img src="images/cat.jpg" alt="">
-                    <div class="d-flex justify-content-center mt-5 movediv">
-                        <h1>
-                            Moves Made: <span id="movecnt">X</span>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-
+    <div class="row">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center titlediv ">
+            <h1 class="titletext"><span class="fixtitle">𝕱𝖎𝖝 𝕿𝖍𝖊</span><span class="catclass"> 𝕮𝖆𝖙</span></h1>
         </div>
+        <div class="col-lg-6 d-flex align-items-center justify-content-center buttondiv">
 
-
-        <!--Win Modal -->
-        <div class="modal fade" id="winModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="staticBackdropLabel">Congratulations</h5>
-                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            <div class="buttonpacket">
+                <a href="gamepage.html" class="button button--piyo" style="margin-bottom: 80px;">
+                    <div class="button__wrapper">
+                        <span class="button__text">Play</span>
                     </div>
-                    <div class="modal-body">
-
-                        <span style="font-weight: 600;">Moves Taken :</span> <span id='moves'>000</span>
-                        <!-- <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label" style="font-weight: 600;">Enter Your
-                            Name:</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="" required>
-                    </div> -->
-
+                    <div class="characterBox">
+                        <div class="character wakeup">
+                            <div class="character__face"></div>
+                        </div>
+                        <div class="character wakeup">
+                            <div class="character__face"></div>
+                        </div>
+                        <div class="character">
+                            <div class="character__face"></div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="button" class="btn playbtn" style="background-color: green; color: white;">Play
-                            Again</button>
+                </a>
+
+                <a href="#" class="button button--pen">
+                    <div class="button__wrapper">
+                        <span class="button__text">Credits</span>
                     </div>
-                </div>
+                    <div class="characterBox">
+                        <div class="character wakeup">
+                            <div class="character__face"></div>
+                            <div class="charactor__face2"></div>
+                        </div>
+                        <div class="character wakeup">
+                            <div class="character__face"></div>
+                            <div class="charactor__face2"></div>
+                        </div>
+                        <div class="character">
+                            <div class="character__face"></div>
+                            <div class="charactor__face2"></div>
+                        </div>
+                    </div>
+                </a>
             </div>
+
         </div>
     </div>
+
 
     <script src="main.js"></script>
     <!-- Bootstrap 5 js script -->
