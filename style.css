@@ -1,14 +1,14 @@
 .grid {
-    height: 312px;
-    width: 312px;
+    height: 624px;
+    width: 624px;
     display: flex;
     flex-wrap: wrap;
     /* background-color: yellow; */
 }
 
 .cell {
-    height: 104px;
-    width: 104px;
+    height: 208px;
+    width: 208px;
     display: flex;
     justify-content: center;
     align-items: center;

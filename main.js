@@ -1,9 +1,61 @@
 'use strict'
 
 let imgnum = [2, 3, 4, 5, 6, 7, 8, 9];
+
 imgnum = shuffleArray(imgnum);
 
+while(!isSolvable(imgnum))
+{
+    imgnum = shuffleArray(imgnum);
+    console.log('akbar');
+}
+
+
 const idlist = ['1-1', '1-2', '1-3', '2-1', '2-2', '2-3', '3-1', '3-2', '3-3'];
+
+
+function convertArrayToTable(arr)
+{
+    let i,newarr = [];
+    let eachrow = [];
+    eachrow.push(0);
+    for(i=1;i<=arr.length;i++)
+    {
+        if(i%3==2)
+        {
+            eachrow.push(arr[i-1]);
+            newarr.push(eachrow);
+            console.log(eachrow);
+            eachrow = [];
+        }
+        else
+        {
+            eachrow.push(arr[i-1]);
+        }
+    }
+    console.log(newarr);
+    return newarr;
+}
+function getInverseCount(prearr)
+{
+    let inv_count = 0,i,j;
+    let arr = [...prearr];
+    arr.unshift(0);
+    for ( i = 0; i < 9 - 1; i++)
+        for ( j = i+1; j < 9; j++)
+             // Value 0 is used for empty space
+             if (arr[j] && arr[i] &&  arr[i] > arr[j])
+                  inv_count++;
+    return inv_count;
+}
+function isSolvable(arr)
+{
+    let invcount = getInverseCount(arr);
+    //console.log(invcount+  "   odd na ev");
+
+    if(invcount%2==0) return 1;
+    return 0;
+}
 
 function createbox() {
     let i;
@@ -16,7 +68,7 @@ function createbox() {
 
         if (i == 0) {
             square.classList.add('faka');
-            square.innerHTML = "<img src='images/solid-color-image.jpeg' width=104px height=104px class='imgbox' id='" + idlist[i] + "'></img>";
+            square.innerHTML = "<img src='images/solid-color-image.jpeg' width=208px height=208px class='imgbox' id='" + idlist[i] + "'></img>";
         }
         //document.querySelector(square).appendChild(elem);
 
@@ -24,7 +76,7 @@ function createbox() {
 
         if (i != 0) {
             console.log(imgnum[i - 1]);
-            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' width=104px height=104px class='imgbox' id='" + idlist[i] + "'></img>"
+            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' width=208px height=208px class='imgbox' id='" + idlist[i] + "'></img>"
         }
 
         //console.log(elem.innerText);
