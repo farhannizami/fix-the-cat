@@ -15,13 +15,16 @@
     background-color: green;
 }
 
-.imgbox:hover
-{
+.imgbox:hover {
     border-style: solid;
     border-color: lightblue;
 }
 
-.imgbox
-{
+.imgbox {
     box-sizing: border-box;
+}
+
+
+.movediv {
+    font-family: 'Lobster', cursive;
 }

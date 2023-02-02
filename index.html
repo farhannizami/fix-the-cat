@@ -8,6 +8,14 @@
     <title>Fix The Cat</title>
     <link rel="stylesheet" href="style.css">
 
+    <!-- Favicons -->
+    <link href="images/cat.jpg" rel="icon">
+
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,33 +27,53 @@
 </head>
 
 <body>
-    <div class="grid" id="lol">
 
-    </div>
-    <button id='bbb'>heello</button>
+    <div class="container mt-3">
 
-    <!--Win Modal -->
-    <div class="modal fade" id="winModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="staticBackdropLabel">Congratulations</h5>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        <div class="row">
+
+            <div class="col">
+                <div class="grid" id="lol"></div>
+            </div>
+
+            <div class="col d-flex justify-content-center">
+                <div>
+                    <img src="images/cat.jpg" alt="">
+                    <div class="d-flex justify-content-center mt-5 movediv">
+                        <h1>
+                            Moves Made: <span id="movecnt">X</span>
+                        </h1>
+                    </div>
                 </div>
-                <div class="modal-body">
+            </div>
 
-                    <span style="font-weight: 600;">Moves Taken :</span> <span id='moves'>000</span>
-                    <!-- <div class="mb-3">
+        </div>
+
+
+        <!--Win Modal -->
+        <div class="modal fade" id="winModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="staticBackdropLabel">Congratulations</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body">
+
+                        <span style="font-weight: 600;">Moves Taken :</span> <span id='moves'>000</span>
+                        <!-- <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label" style="font-weight: 600;">Enter Your
                             Name:</label>
                         <input type="text" class="form-control" id="name" aria-describedby="" required>
                     </div> -->
 
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn playbtn" style="background-color: green; color: white;">Play Again</button>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="button" class="btn playbtn" style="background-color: green; color: white;">Play
+                            Again</button>
+                    </div>
                 </div>
             </div>
         </div>

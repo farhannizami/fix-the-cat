@@ -60,6 +60,7 @@ function isSolvable(arr) {
 function createbox() {
 
     changeOrder();
+    moveUpdate();
 
     let i;
     for (i = 0; i < 9; i++) {
@@ -126,6 +127,12 @@ function checkWin() {
 }
 
 
+function moveUpdate()
+{
+    document.getElementById('movecnt').innerHTML = moves.toString();
+}
+
+
 function checkSurround(idval) {
 
     //alert('oma');
@@ -181,6 +188,7 @@ function checkSurround(idval) {
             target_parent.appendChild(victim);
 
             moves++;
+            moveUpdate();
             checkWin();
 
             return;
@@ -225,6 +233,7 @@ function checkSurround(idval) {
             target_parent.appendChild(victim);
 
             moves++;
+            moveUpdate()
             checkWin();
 
             return;
@@ -268,6 +277,7 @@ function checkSurround(idval) {
             target_parent.appendChild(victim);
 
             moves++;
+            moveUpdate();
             checkWin();
 
             return;
@@ -311,6 +321,7 @@ function checkSurround(idval) {
             target_parent.appendChild(victim);
 
             moves++;
+            moveUpdate();
             checkWin();
 
             return;
