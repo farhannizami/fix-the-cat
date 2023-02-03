@@ -6,6 +6,13 @@ let winserial = [...imgnum];
 let moves = 0;
 
 
+const image_side = 208;
+const image_size = "width="+ image_side+"px height="+image_side+"px";
+
+let window_width = window.innerWidth;
+console.log(window_width);
+
+
 function changeOrder() {
     imgnum = shuffleArray(imgnum);
 
@@ -72,7 +79,7 @@ function createbox() {
 
         if (i == 0) {
             square.classList.add('faka');
-            square.innerHTML = "<img src='images/solid-color-image.jpeg' width=208px height=208px class='imgbox class1-1' id='" + idlist[i] + "'></img>";
+            square.innerHTML = "<img src='images/solid-color-image.jpeg' class='imgbox class1-1' id='" + idlist[i] + "'></img>";
         }
         //document.querySelector(square).appendChild(elem);
 
@@ -80,7 +87,7 @@ function createbox() {
 
         if (i != 0) {
             console.log(imgnum[i - 1]);
-            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' width=208px height=208px class='imgbox class" + idlist[imgnum[i - 1] - 1].toString() + "' id='" + idlist[i] + "'></img>"
+            square.innerHTML = "<img src='images/" + imgnum[i - 1].toString() + ".jpg' class='imgbox class" + idlist[imgnum[i - 1] - 1].toString() + "' id='" + idlist[i] + "'></img>"
         }
 
         document.querySelector('.grid').appendChild(square);

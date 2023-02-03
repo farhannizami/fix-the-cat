@@ -22,6 +22,8 @@
 
 .imgbox {
     box-sizing: border-box;
+    width: 208px;
+    height: 208px;
 }
 
 
@@ -66,6 +68,31 @@
 
     .buttondiv {
         height: auto;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .grid {
+        height: 312px;
+        width: 312px;
+    }
+    .imgbox {
+        width: 104px;
+        height: 104px;
+    }
+    .cell
+    {
+        width: 104px;
+        height: 104px;
+    }
+    .gameside
+    {
+        height: auto !important;
+    }
+    .scoreside
+    {
+        height: auto !important;
     }
 }
 
