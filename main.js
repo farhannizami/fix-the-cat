@@ -65,7 +65,7 @@ function isSolvable(arr) {
 
 function createbox() {
 
-    changeOrder();
+    //changeOrder();
     moveUpdate();
 
     if(localStorage.getItem('lowscore'))
@@ -136,10 +136,12 @@ function checkWin() {
         document.getElementById('moves').innerHTML = moves.toString();
 
         if (localStorage.getItem('lowscore')) {
-            const lowscore = localStorage.getItem('lowscore');
+            let lowscore = localStorage.getItem('lowscore');
+            console.log(lowscore);
             if (moves < lowscore) {
                 lowscore = moves;
-                localStorage.setItem('lowscore', lowscore);
+                localStorage.setItem('lowscore', moves);
+                console.log(localStorage.getItem('lowscore'));
             }
         }
         else {
