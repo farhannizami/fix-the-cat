@@ -1,3 +1,8 @@
+body {
+    background-color: #F7F7F7 !important;
+    
+}
+
 .grid {
     height: 624px;
     width: 624px;
@@ -60,7 +65,6 @@
 }
 
 
-
 @media only screen and (max-width: 992px) {
     .titletext {
         margin-top: 40px;
@@ -82,23 +86,25 @@
         height: 312px;
         width: 312px;
     }
+
     .imgbox {
         width: 104px;
         height: 104px;
     }
-    .cell
-    {
+
+    .cell {
         width: 104px;
         height: 104px;
     }
-    .gameside
-    {
+
+    .gameside {
         height: auto !important;
     }
-    .scoreside
-    {
+
+    .scoreside {
         height: auto !important;
     }
+
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1300px) {
@@ -106,21 +112,22 @@
         height: 450px;
         width: 450px;
     }
+
     .imgbox {
         width: 150px;
         height: 150px;
     }
-    .cell
-    {
+
+    .cell {
         width: 150px;
         height: 150px;
     }
-    .gameside
-    {
+
+    .gameside {
         height: 100vh !important;
     }
-    .scoreside
-    {
+
+    .scoreside {
         height: 100vh !important;
     }
 }
@@ -130,21 +137,22 @@
         height: 450px;
         width: 450px;
     }
+
     .imgbox {
         width: 150px;
         height: 150px;
     }
-    .cell
-    {
+
+    .cell {
         width: 150px;
         height: 150px;
     }
-    .gameside
-    {
+
+    .gameside {
         height: auto !important;
     }
-    .scoreside
-    {
+
+    .scoreside {
         height: auto !important;
     }
 }
@@ -155,25 +163,26 @@
         height: 300px;
         width: 300px;
     }
+
     .imgbox {
         width: 100px;
         height: 100px;
     }
-    .cell
-    {
+
+    .cell {
         width: 100px;
         height: 100px;
     }
-    .gameside
-    {
+
+    .gameside {
         height: auto !important;
     }
-    .scoreside
-    {
+
+    .scoreside {
         height: auto !important;
     }
-    .ogcat
-    {
+
+    .ogcat {
         height: 300px;
         width: 300px;
     }
@@ -812,4 +821,46 @@
     align-items: center;
     /* background : #FFF ; */
     background: #F7F7F7;
+}
+
+
+
+
+/* credit section  */
+.wrapper {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 500px;
+    margin-left: -200px;
+    font: 300 30px/1 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4D4D4D;
+    animation: 15s credits linear infinite;
+}
+
+.movie {
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+
+.job {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.name {
+    margin-bottom: 50px;
+    font-size: 25px;
+}
+
+@keyframes credits {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: -130%;
+    }
 }
