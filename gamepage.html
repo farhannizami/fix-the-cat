@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,12 +39,18 @@
                 <div class="grid" id="lol"></div>
             </div>
 
-            <div class="col-lg-6 mt-2 d-flex justify-content-center align-items-center scoreside" style="height: 100vh;">
+            <div class="col-lg-6 mt-2 d-flex justify-content-center align-items-center scoreside"
+                style="height: 100vh;">
                 <div>
                     <img src="images/cat.jpg" class="ogcat" alt="broken cat">
                     <div class="d-flex justify-content-center mt-5 movediv">
                         <h1>
                             Moves Made: <span id="movecnt">X</span>
+                        </h1>
+                    </div>
+                    <div class="d-flex justify-content-center movediv">
+                        <h1>
+                            Minimum Moves Used: <span id="lowscore">Infinity</span>
                         </h1>
                     </div>
                 </div>

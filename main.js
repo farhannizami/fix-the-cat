@@ -7,7 +7,7 @@ let moves = 0;
 
 
 const image_side = 208;
-const image_size = "width="+ image_side+"px height="+image_side+"px";
+const image_size = "width=" + image_side + "px height=" + image_side + "px";
 
 let window_width = window.innerWidth;
 console.log(window_width);
@@ -16,8 +16,7 @@ console.log(window_width);
 function changeOrder() {
     imgnum = shuffleArray(imgnum);
 
-    while(!isSolvable(imgnum))
-    {
+    while (!isSolvable(imgnum)) {
         imgnum = shuffleArray(imgnum);
         console.log('akbar');
     }
@@ -68,6 +67,11 @@ function createbox() {
 
     changeOrder();
     moveUpdate();
+
+    if(localStorage.getItem('lowscore'))
+    {
+        document.getElementById('lowscore').innerHTML = localStorage.getItem('lowscore');
+    }
 
     let i;
     for (i = 0; i < 9; i++) {
@@ -130,12 +134,22 @@ function checkWin() {
     if (flag) {
         $('#winModal').modal('show');
         document.getElementById('moves').innerHTML = moves.toString();
+
+        if (localStorage.getItem('lowscore')) {
+            const lowscore = localStorage.getItem('lowscore');
+            if (moves < lowscore) {
+                lowscore = moves;
+                localStorage.setItem('lowscore', lowscore);
+            }
+        }
+        else {
+            localStorage.setItem('lowscore', moves);
+        }
     }
 }
 
 
-function moveUpdate()
-{
+function moveUpdate() {
     document.getElementById('movecnt').innerHTML = moves.toString();
 }
 
