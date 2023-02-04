@@ -4,6 +4,8 @@
     display: flex;
     flex-wrap: wrap;
     /* background-color: yellow; */
+    margin: 0;
+    padding: 0;
 }
 
 .cell {
@@ -56,6 +58,8 @@
     height: 100vh;
 }
 
+
+
 @media only screen and (max-width: 992px) {
     .titletext {
         margin-top: 40px;
@@ -72,7 +76,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 780px) {
     .grid {
         height: 312px;
         width: 312px;
@@ -96,6 +100,83 @@
     }
 }
 
+@media only screen and (min-width: 992px) and (max-width: 1300px) {
+    .grid {
+        height: 450px;
+        width: 450px;
+    }
+    .imgbox {
+        width: 150px;
+        height: 150px;
+    }
+    .cell
+    {
+        width: 150px;
+        height: 150px;
+    }
+    .gameside
+    {
+        height: 100vh !important;
+    }
+    .scoreside
+    {
+        height: 100vh !important;
+    }
+}
+
+@media only screen and (min-width: 781px) and (max-width: 991px) {
+    .grid {
+        height: 450px;
+        width: 450px;
+    }
+    .imgbox {
+        width: 150px;
+        height: 150px;
+    }
+    .cell
+    {
+        width: 150px;
+        height: 150px;
+    }
+    .gameside
+    {
+        height: auto !important;
+    }
+    .scoreside
+    {
+        height: auto !important;
+    }
+}
+
+
+@media only screen and (max-width: 320px) {
+    .grid {
+        height: 300px;
+        width: 300px;
+    }
+    .imgbox {
+        width: 100px;
+        height: 100px;
+    }
+    .cell
+    {
+        width: 100px;
+        height: 100px;
+    }
+    .gameside
+    {
+        height: auto !important;
+    }
+    .scoreside
+    {
+        height: auto !important;
+    }
+    .ogcat
+    {
+        height: 300px;
+        width: 300px;
+    }
+}
 
 
 /* button classes */
