@@ -65,7 +65,7 @@ function isSolvable(arr) {
 
 function createbox() {
 
-    //changeOrder();
+    changeOrder();
     moveUpdate();
 
     if(localStorage.getItem('lowscore'))
